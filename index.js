@@ -9,6 +9,9 @@ const port = 8000
 //tell express that we want to use EJS as the templating engine
 app.set('view engine', 'ejs');
 
+//public directory from which we are serving static files
+app.use(express.static(__dirname + '/public'));
+
 //set up the body parser
 app.use(express.urlencoded({extended: true}));
 

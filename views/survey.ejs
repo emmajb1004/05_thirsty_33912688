@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%=shopName%></title>
+    <link href="/css/styles.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+    <form id="survey_form" action="/survey" method="POST">
+        <label for="first_name">First Name: </label>
+        <input id="first_name" type="text" name="first_name">
+
+        <label for="surname">Surname: </label>
+        <input id="surname" type="text" name="surname">
+
+        <label for="email">Email: </label>
+        <input id="email" type="text" name="email">
+        
+        <label for="age">How Old Are You? </label>
+        <input id="age" type="text" name="age">
+        
+        <label for="category">Which of the following drinks categories do you consume? </label><br>
+        <% for(let i = 0; i < productCategories.length; i++) { %>
+            <input 
+                type="radio" 
+                id="survey_category_<%= i %>"
+                name="category" 
+                value="<%=productCategories[i]%>"
+            />
+            <label for="survey_category_<%= i %>"><%= productCategories[i] %></label><br>
+        <%} %>
+
+        <label for="survey_student">Are You A Student?</label><br>
+        
+        <input type="checkbox" id="survey_student" name="student" value="Yes">
+        <label for="survey_student">Yes</label><br>
+        
+        <input type="submit" value="OK">
+    </form>
+    <a href="/">Back to Home</a>
+    
+    <script>
+        function validateEmail(email) {
+            const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+            return emailPattern.test(email);
+        }
+
+        document.getElementById('survey_form').addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent the form from submitting
+            const emailInput = document.getElementById('email');
+
+            if(validateEmail(emailInput.value)) {
+                this.submit()
+            } else {
+                alert('please enter a valid email')
+            }
+        })
+    </script>
+</body>
+</html>

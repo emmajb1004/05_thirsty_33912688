@@ -4,7 +4,25 @@ const router = express.Router();
 
 //define our data
 var shopData = {shopName: "Pour up (drank)",
-                productCategories:["Beer", "Wine", "Soft Drinks", "Hot Drinks"]};
+                productCategories:["Beer", "Wine", "Soft Drinks", "Hot Drinks"],
+                shops: [
+                    {
+                        location: "New York",
+                        managerName: "Alan Wake",
+                        address: "123 Street, New York, NY"
+                    },
+                    {
+                        location: "London",
+                        managerName: "Lara Croft",
+                        address: "321 Avenue, London, UK"
+                    },
+                    {
+                        location: "Ann Arbor",
+                        managerName: "Nathan Drake",
+                        address: "420 Detroit Street, Ann Arbor, MI"
+                    }
+                    ]
+                };
 
 //Handle the main routes
 router.get("/", (req, res) => {
@@ -32,6 +50,22 @@ router.post("/registered", (req,res) => {
     res.send(' Hello ' + req.body.first + ' ' + req.body.last +
              ' you are now registered! We will send an email to you at ' +
              req.body.email);
+});
+
+router.get("/survey", (req,res) => {
+    res.render("survey.ejs", shopData)
+})
+
+router.post("/survey", (req,res) => {
+    const responses = {
+        first_name: req.body.first_name,
+        surname: req.body.surname,
+        email: req.body.email,
+        category: req.body.category,
+        age: req.body.age,
+        student: req.body.student ? "Yes" : "No"
+    };
+    res.render("survey_result.ejs", {responses});
 });
 
 //Export the router object so index.js can access it
