@@ -4,18 +4,29 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><%=shopName%></title>
-    <link href="/css/styles.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 </head>
 <body>
-    <h1> This is the register page </h1>
-    <form id="register_form" method="POST" action="/registered">
-        First Name:<input id="first" type="text" name="first"/>
-        Last Name:<input id="last" type="text" name="last"/>
-        Email:<input id="email" type="text" name="email"/>
-        <input type="submit" value="OK"/>
-    </form>
+    <div class="container">
+        <h1 class="mb-4"> This is the register page </h1>
+        <form id="register_form" method="POST" action="/registered">
+        <div class="form-group">
+            <label for="first_name">First Name:</label>
+            <input required id="first" type="text" name="first" class="form-control"/>
+        </div>
+        <div class="form-group">
+            <label for="last_name">Last Name:</label>
+            <input required id="last" type="text" name="last" class="form-control"/>
+        </div>
+        <div class="form-group">
+            <label for="email">Email:</label>
+            <input required id="email" type="text" name="email" class="form-control"/>
+        </div>
+            <input class="btn btn-primary" type="submit" value="OK"/>
+        </form>
 
-    <a href="/">Back to Home</a>
+        <a href="/">Back to Home</a>
+    </div>
     <script>
         function validateEmail(email) {
             const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;

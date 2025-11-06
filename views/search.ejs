@@ -4,18 +4,22 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title><%=shopName%></title>
-        <link href="/css/styles.css" rel="stylesheet" type="text/css">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     </head>
     <body>
-        <h1>This is the Search Page for <%=shopName%> Shop</h1>
-        <p>You will be able to search here</p>
-        <form action="/search_result" method="GET">
-            Name:
-            <input id="search_box" type="text" name="search_text">
-            Category:
-            <input id="search_box" type="text" name="category">
-            <input type="submit" value="OK">
-        </form>
-        <a href="/">Back to Home</a>
+        <div class="container">
+            <h1 class="mb-4">This is the Search Page for <%=shopName%> Shop</h1>
+            <p>You will be able to search here</p>
+            <form action="/search_result" method="GET">
+                <div class="form-group">
+                    <label for="name_search">Name:</label>
+                    <input id="name_search" type="text" name="search_text" class="form-control">
+                    <label for="category_search">Category:</label>
+                    <input id="category_search" type="text" name="category" class="form-control">
+                </div>
+            <input class="btn btn-primary" type="submit" value="OK">
+            </form>
+            <a href="/">Back to Home</a>
+        </div>
     </body>
 </html>
